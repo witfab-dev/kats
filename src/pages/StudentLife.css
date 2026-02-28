@@ -1,0 +1,437 @@
+/* src/pages/StudentLife.css */
+.student-life-page {
+  padding: 2rem 0;
+}
+
+.page-hero {
+  padding: 3rem 0;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-hero h1 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.page-hero .lead {
+  color: var(--color-gray-600);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, white 100%);
+  border-radius: 12px;
+  min-width: 150px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-item h3 {
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.life-tabs .nav-link {
+  color: var(--color-gray-600);
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  border: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.life-tabs .nav-link.active {
+  color: var(--color-primary);
+  background-color: transparent;
+  border-bottom-color: var(--color-primary);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h2 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.section-header .lead {
+  color: var(--color-gray-600);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.club-card {
+  border: none;
+  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.club-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.club-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+}
+
+.club-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.club-title {
+  flex: 1;
+}
+
+.club-title .card-title {
+  color: white;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.club-card .card-body {
+  padding: 1.5rem;
+}
+
+.achievements {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.achievements h6 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.achievements-list {
+  padding-left: 1.2rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.achievements-list li {
+  margin-bottom: 0.25rem;
+  color: var(--color-gray-600);
+}
+
+.benefit-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 1.8rem;
+}
+
+.events-calendar {
+  margin-bottom: 2rem;
+}
+
+.event-item {
+  border: none;
+  box-shadow: var(--shadow-sm);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.event-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.event-date {
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.event-month {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+.event-day {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.event-year {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.event-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-gray-600);
+}
+
+.participation-stats {
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--color-gray-50) 0%, white 100%);
+  border-radius: 12px;
+}
+
+.stat-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(var(--color-primary) 85%, var(--color-gray-200) 85%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.stat-circle::before {
+  content: '';
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.circle-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.circle-text h2 {
+  color: var(--color-primary);
+  margin: 0;
+  font-weight: 700;
+}
+
+.facility-card {
+  border: none;
+  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.facility-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.facility-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.facility-header h5 {
+  color: var(--color-primary);
+  margin: 0;
+  font-weight: 600;
+}
+
+.facility-hours {
+  padding: 0.75rem;
+  background-color: var(--color-gray-50);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.facility-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.testimonial-card {
+  border: none;
+  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.student-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.testimonial-quote {
+  font-style: italic;
+  color: var(--color-gray-700);
+  line-height: 1.6;
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+}
+
+.achievement-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 193, 7, 0.1);
+  border-radius: 20px;
+  color: var(--color-gray-700);
+  font-size: 0.9rem;
+}
+
+.video-testimonial {
+  cursor: pointer;
+}
+
+.video-placeholder {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-gray-100) 0%, var(--color-gray-200) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.video-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  animation: shimmer 2s infinite;
+}
+
+.play-icon {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.video-testimonial:hover .play-icon {
+  transform: scale(1.1);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 2rem 0;
+  }
+  
+  .hero-stats {
+    gap: 1rem;
+  }
+  
+  .stat-item {
+    min-width: 120px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .stat-item h3 {
+    font-size: 2rem;
+  }
+  
+  .life-tabs .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .club-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .event-item .row {
+    flex-direction: column;
+  }
+  
+  .event-date {
+    margin-bottom: 1rem;
+  }
+  
+  .facility-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

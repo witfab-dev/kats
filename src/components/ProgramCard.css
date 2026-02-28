@@ -1,0 +1,118 @@
+/* src/components/ProgramCard.css */
+.program-card {
+  border: none;
+  box-shadow: var(--shadow-md);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.program-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.program-header {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  position: relative;
+}
+
+.program-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.program-title {
+  color: white;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.program-category {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.program-card .card-body {
+  padding: 1.5rem;
+}
+
+.program-description {
+  color: var(--color-gray-700);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.program-features {
+  margin-bottom: 1.5rem;
+}
+
+.program-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-gray-600);
+}
+
+.feature-icon {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+.program-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-gray-600);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.program-actions {
+  margin-top: auto;
+}
+
+.program-stats {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  margin-top: 1rem;
+}
+
+.program-stat {
+  text-align: center;
+}
+
+.program-stat .value {
+  display: block;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.program-stat .label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 0.25rem;
+}
