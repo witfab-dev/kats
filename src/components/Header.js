@@ -92,8 +92,8 @@ const Header = () => {
               <img
                 src="/images/logo.jpeg"
                 alt="KATSS Logo"
-                height="55"
-                width="55"
+                height="60"
+                width="60"
                 className="rounded-circle me-3"
                 onError={(e) => {
                   e.target.onerror = null;

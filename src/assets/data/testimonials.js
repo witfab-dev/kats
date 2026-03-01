@@ -1,3 +1,5 @@
+// Testimonials data for KATSS website
+
 export const testimonials = [
   {
     id: 1,
