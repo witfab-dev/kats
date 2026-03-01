@@ -47,6 +47,12 @@ const Gallery = () => {
     });
   };
 
+  // Helper function to get correct video path (handles spaces in filenames)
+  const getVideoPath = (videoPath) => {
+    // Encode the path to handle spaces and special characters
+    return encodeURI(videoPath);
+  };
+
   return (
     <div className="gallery-page">
       <Container>
@@ -75,7 +81,7 @@ const Gallery = () => {
               ) : (
                 <div className="video-thumbnail">
                   <img 
-                    src={item.thumbnail} 
+                    src={item.thumbnail || '/images/video-placeholder.jpg'} 
                     alt={item.title}
                     className="video-preview"
                     onError={(e) => {
@@ -115,14 +121,23 @@ const Gallery = () => {
                 <img 
                   id="lightbox-img" 
                   className="lightbox-img" 
-                  src={mediaItems[currentIndex].image} 
+                  src={mediaItems[currentIndex].image}
                   alt={mediaItems[currentIndex].title}
                   style={{ display: 'block' }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://placehold.co/800x600/003366/ffffff?text=Image+Not+Found';
+                  }}
                 />
               ) : (
                 <div id="lightbox-video" className="lightbox-video" style={{ display: 'block' }}>
-                  <video id="video-player" controls autoPlay>
-                    <source src={mediaItems[currentIndex].video} type="video/mp4" />
+                  <video 
+                    id="video-player" 
+                    controls 
+                    autoPlay
+                    key={mediaItems[currentIndex].video} // Force re-render when video changes
+                  >
+                    <source src={getVideoPath(mediaItems[currentIndex].video)} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                   <div className="video-controls">
@@ -143,7 +158,9 @@ const Gallery = () => {
                 </div>
               )}
               <div id="lightbox-caption" className="lightbox-caption">
-                {mediaItems[currentIndex].title}
+                <h4>{mediaItems[currentIndex].title}</h4>
+                <p>{mediaItems[currentIndex].description}</p>
+                <small>{formatDate(mediaItems[currentIndex].date)}</small>
               </div>
             </div>
           </div>

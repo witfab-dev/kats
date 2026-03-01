@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* Prevent horizontal shifting */
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure consistent width */
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Force scrollbar to prevent layout shift */
+html {
+  overflow-y: scroll;
+}

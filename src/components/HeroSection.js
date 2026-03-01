@@ -10,7 +10,9 @@ const HeroSection = ({
   backgroundImage, 
   ctaPrimary, 
   ctaSecondary,
-  showVideo = false 
+  showVideo = false,
+  align = 'center', // 'center', 'left', or 'right'
+  showStats = true // Control whether to show the stats column
 }) => {
   return (
     <section className="hero-section position-relative overflow-hidden">
@@ -26,8 +28,16 @@ const HeroSection = ({
       </div>
       
       <Container className="position-relative z-2 py-6">
-        <Row className="align-items-center min-vh-70">
-          <Col lg={7} className="text-center text-lg-start">
+        <Row className={`align-items-center min-vh-70 ${
+          align === 'left' ? 'justify-content-start' : 
+          align === 'right' ? 'justify-content-end' : 
+          'justify-content-center'
+        }`}>
+          <Col lg={showStats ? 7 : 12} className={`${
+            align === 'left' ? 'text-start' : 
+            align === 'right' ? 'text-end' : 
+            'text-center text-lg-start'
+          }`}>
             <h1 className="display-4 fw-bold text-white mb-4" data-aos="fade-up">
               {title}
             </h1>
@@ -35,7 +45,11 @@ const HeroSection = ({
               {subtitle}
             </p>
             
-            <div className="d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="200">
+            <div className={`d-flex flex-wrap gap-3 ${
+              align === 'left' ? 'justify-content-start' : 
+              align === 'right' ? 'justify-content-end' : 
+              'justify-content-center justify-content-lg-start'
+            }`} data-aos="fade-up" data-aos-delay="200">
               {ctaPrimary && (
                 <Button 
                   as={Link} 
@@ -73,37 +87,39 @@ const HeroSection = ({
             </div>
           </Col>
           
-          <Col lg={5} className="mt-5 mt-lg-0" data-aos="fade-left">
-            <div className="hero-stats bg-white rounded-3 p-4 shadow-lg">
-              <h4 className="text-primary mb-4">Quick Facts</h4>
-              <div className="row g-3">
-                <div className="col-6">
-                  <div className="text-center p-3 bg-light rounded-2">
-                    <h3 className="text-primary mb-0">1,200+</h3>
-                    <small className="text-muted">Students</small>
+          {showStats && (
+            <Col lg={5} className="mt-5 mt-lg-0" data-aos="fade-left">
+              <div className="hero-stats bg-white rounded-3 p-4 shadow-lg">
+                <h4 className="text-primary mb-4">Quick Facts</h4>
+                <div className="row g-3">
+                  <div className="col-6">
+                    <div className="text-center p-3 bg-light rounded-2">
+                      <h3 className="text-primary mb-0">1,200+</h3>
+                      <small className="text-muted">Students</small>
+                    </div>
                   </div>
-                </div>
-                <div className="col-6">
-                  <div className="text-center p-3 bg-light rounded-2">
-                    <h3 className="text-primary mb-0">95%</h3>
-                    <small className="text-muted">Success Rate</small>
+                  <div className="col-6">
+                    <div className="text-center p-3 bg-light rounded-2">
+                      <h3 className="text-primary mb-0">95%</h3>
+                      <small className="text-muted">Success Rate</small>
+                    </div>
                   </div>
-                </div>
-                <div className="col-6">
-                  <div className="text-center p-3 bg-light rounded-2">
-                    <h3 className="text-primary mb-0">6</h3>
-                    <small className="text-muted">Programs</small>
+                  <div className="col-6">
+                    <div className="text-center p-3 bg-light rounded-2">
+                      <h3 className="text-primary mb-0">6</h3>
+                      <small className="text-muted">Programs</small>
+                    </div>
                   </div>
-                </div>
-                <div className="col-6">
-                  <div className="text-center p-3 bg-light rounded-2">
-                    <h3 className="text-primary mb-0">18+</h3>
-                    <small className="text-muted">Years Experience</small>
+                  <div className="col-6">
+                    <div className="text-center p-3 bg-light rounded-2">
+                      <h3 className="text-primary mb-0">20+</h3>
+                      <small className="text-muted">Years Experience</small>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Col>
+            </Col>
+          )}
         </Row>
       </Container>
       
