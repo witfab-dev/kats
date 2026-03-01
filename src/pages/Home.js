@@ -23,25 +23,21 @@ import { programs } from '../assets/data/programs';
 import { testimonials } from '../assets/data/testimonials';
 import { stats } from '../assets/data/constants';
 import { trackPageView } from '../utils/analytics';
+import './Home.css'; // Create this CSS file for home-specific styles
 
 const Home = () => {
-    useEffect(() => {
-    // Track page view with proper error handling
+  useEffect(() => {
     const trackHomePageView = async () => {
       try {
-        // Check if trackPageView is available
         if (typeof trackPageView === 'function') {
           await trackPageView('/');
         } else {
-          // Fallback: try dynamic import
           try {
             const analyticsModule = await import('../utils/analytics');
-            if (analyticsModule.trackPageView && typeof analyticsModule.trackPageView === 'function') {
+            if (analyticsModule.trackPageView) {
               await analyticsModule.trackPageView('/');
             }
           } catch (importError) {
-            console.warn('Analytics module not found, using fallback:', importError);
-            // Fallback tracking for development
             if (process.env.NODE_ENV === 'development') {
               console.log('📊 [DEV] Page View Tracked: /');
             }
@@ -49,7 +45,6 @@ const Home = () => {
         }
       } catch (error) {
         console.error('Failed to track page view:', error);
-        // Don't break the app if analytics fails
       }
     };
 
@@ -65,9 +60,9 @@ const Home = () => {
         <title>KATSS - Kirehe Adventist Technical Secondary School</title>
         <meta 
           name="description" 
-          content="Kirehe Adventist Technical Secondary School offers quality technical education with Christian values in Rwanda. Explore our programs in Software Development, Building Construction, Accounting, and more." 
+          content="Kirehe Adventist Technical Secondary School offers quality technical education with Christian values in Rwanda." 
         />
-        <meta name="keywords" content="technical school Rwanda, Kirehe school, TVET Rwanda, Adventist education, technical training" />
+        <meta name="keywords" content="technical school Rwanda, Kirehe school, TVET Rwanda" />
         <link rel="canonical" href="https://katss.ac.rw" />
       </Helmet>
 
@@ -75,23 +70,22 @@ const Home = () => {
       <HeroSection 
         title="Shaping Future Leaders Through Technical Excellence"
         subtitle="Kirehe Adventist Technical Secondary School combines academic rigor with hands-on technical training"
-        backgroundImage="/images/images.jpeg"
-        ctaPrimary={{ text: "Apply Now", link: "/apply" }}
+        backgroundImage="/images/schoolcomp.jpg"
         ctaSecondary={{ text: "Explore Programs", link: "/programs" }}
       />
 
       {/* Quick Stats */}
-      <section className="section-padding bg-light">
+      <section className="section-padding stats-section">
         <Container>
-          <div className="text-center mb-5" data-aos="fade-up">
-            <h2 className="fw-bold text-primary mb-3">Why Choose KATSS?</h2>
-            <p className="text-muted lead mb-0">
+          <div className="section-header text-center mb-5" data-aos="fade-up">
+            <h2 className="section-title">Why Choose KATSS?</h2>
+            <p className="section-subtitle">
               We provide quality education that transforms lives and builds careers
             </p>
           </div>
-          <Row className="g-4">
+          <Row className="g-4 justify-content-center">
             {stats.map((stat, index) => (
-              <Col lg={3} md={6} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+              <Col xl={3} lg={3} md={6} sm={6} xs={12} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
                 <StatsCard {...stat} />
               </Col>
             ))}
@@ -100,114 +94,130 @@ const Home = () => {
       </section>
 
       {/* Featured Programs */}
-      <section className="section-padding">
+      <section className="section-padding programs-section">
         <Container>
-          <div className="text-center mb-5" data-aos="fade-up">
-            <h2 className="fw-bold text-primary mb-3">Our Technical Programs</h2>
-            <p className="text-muted lead mb-0">
+          <div className="section-header text-center mb-5" data-aos="fade-up">
+            <h2 className="section-title">Our Technical Programs</h2>
+            <p className="section-subtitle">
               Industry-relevant skills for tomorrow's job market
             </p>
           </div>
           <Row className="g-4">
             {featuredPrograms.map((program, index) => (
-              <Col lg={3} md={6} key={program.id} data-aos="fade-up" data-aos-delay={index * 100}>
+              <Col xl={3} lg={3} md={6} sm={6} xs={12} key={program.id} data-aos="fade-up" data-aos-delay={index * 100}>
                 <ProgramCard {...program} />
               </Col>
             ))}
           </Row>
           <div className="text-center mt-5" data-aos="fade-up">
-            <Button as={Link} to="/programs" variant="primary" size="lg" className="px-5">
+            <Button as={Link} to="/programs" variant="primary" size="lg" className="px-5 view-all-btn">
               View All Programs <FaArrowRight className="ms-2" />
             </Button>
           </div>
         </Container>
       </section>
 
-      {/* About Preview */}
-      <section className="section-padding bg-light">
+      {/* About Preview with Improved Image */}
+      <section className="section-padding about-preview-section bg-light">
         <Container>
           <Row className="align-items-center g-5">
-            <Col lg={6} data-aos="fade-right">
-              <div className="position-relative">
-                <LazyLoadImage
-                  src="/images/schoolcomp.jpg"
-                  alt="KATSS Campus"
-                  className="img-fluid rounded-3 shadow-lg"
-                  effect="blur"
-                  placeholderSrc="https://placehold.co/600x400/003366/ffffff?text=KATSS+Campus"
-                />
-                <div className="position-absolute bottom-0 start-0 bg-primary text-white p-4 rounded-end">
-                  <h4 className="mb-0">18+ Years</h4>
-                  <p className="mb-0 small">Of Educational Excellence</p>
+            <Col lg={6} md={12} data-aos="fade-right">
+              <div className="about-image-wrapper position-relative">
+                <div className="image-container">
+                  <LazyLoadImage
+                    src="/images/schoolcomp.jpg"
+                    alt="KATSS Campus"
+                    className="about-image img-fluid"
+                    effect="blur"
+                    wrapperClassName="about-image-wrapper"
+                    placeholderSrc="https://placehold.co/600x400/003366/ffffff?text=KATSS+Campus"
+                  />
+                </div>
+                <div className="experience-badge">
+                  <span className="years">18+</span>
+                  <span className="text">Years of Excellence</span>
                 </div>
               </div>
             </Col>
-            <Col lg={6} data-aos="fade-left">
-              <h2 className="fw-bold text-primary mb-4">
-                Transforming Education in Eastern Rwanda
-              </h2>
-              <p className="lead mb-4">
-                Since 2004, KATSS has been at the forefront of technical education, 
-                providing students with practical skills and moral values to succeed 
-                in Rwanda's growing economy.
-              </p>
-              <ul className="list-unstyled mb-4">
-                <li className="mb-3">
-                  <FaAward className="text-primary me-3" />
-                  <strong>Accredited Programs:</strong> All courses recognized by WDA
-                </li>
-                <li className="mb-3">
-                  <GiTeacher className="text-primary me-3" />
-                  <strong>Experienced Faculty:</strong> Industry professionals as instructors
-                </li>
-                <li className="mb-3">
-                  <FaBookOpen className="text-primary me-3" />
-                  <strong>Modern Facilities:</strong> State-of-the-art labs and workshops
-                </li>
-                <li>
-                  <FaGraduationCap className="text-primary me-3" />
-                  <strong>High Placement Rate:</strong> 95% employment after graduation
-                </li>
-              </ul>
-              <Button as={Link} to="/about" variant="outline-primary" size="lg">
-                Learn More About Us
-              </Button>
+            <Col lg={6} md={12} data-aos="fade-left">
+              <div className="about-content">
+                <h2 className="about-title">
+                  Transforming Education in Eastern Rwanda
+                </h2>
+                <p className="about-description">
+                  Since 2004, KATSS has been at the forefront of technical education, 
+                  providing students with practical skills and moral values to succeed 
+                  in Rwanda's growing economy.
+                </p>
+                <ul className="about-features">
+                  <li className="feature-item">
+                    <FaAward className="feature-icon" />
+                    <div className="feature-text">
+                      <strong>Accredited Programs:</strong> All courses recognized by WDA
+                    </div>
+                  </li>
+                  <li className="feature-item">
+                    <GiTeacher className="feature-icon" />
+                    <div className="feature-text">
+                      <strong>Experienced Faculty:</strong> Industry professionals as instructors
+                    </div>
+                  </li>
+                  <li className="feature-item">
+                    <FaBookOpen className="feature-icon" />
+                    <div className="feature-text">
+                      <strong>Modern Facilities:</strong> State-of-the-art labs and workshops
+                    </div>
+                  </li>
+                  <li className="feature-item">
+                    <FaGraduationCap className="feature-icon" />
+                    <div className="feature-text">
+                      <strong>High Placement Rate:</strong> 95% employment after graduation
+                    </div>
+                  </li>
+                </ul>
+                <Button as={Link} to="/about" variant="outline-primary" size="lg" className="learn-more-btn">
+                  Learn More About Us <FaArrowRight className="ms-2" />
+                </Button>
+              </div>
             </Col>
           </Row>
         </Container>
       </section>
 
       {/* Latest News & Events */}
-      <section className="section-padding">
+      <section className="section-padding news-section">
         <Container>
-          <div className="d-flex justify-content-between align-items-center mb-5" data-aos="fade-up">
+          <div className="section-header d-flex justify-content-between align-items-center mb-5" data-aos="fade-up">
             <div>
-              <h2 className="fw-bold text-primary mb-2">Latest News & Events</h2>
-              <p className="text-muted mb-0">Stay updated with school activities and announcements</p>
+              <h2 className="section-title mb-2">Latest News & Events</h2>
+              <p className="section-subtitle mb-0">Stay updated with school activities and announcements</p>
             </div>
-            <Button as={Link} to="/news-events" variant="outline-primary">
+            <Button as={Link} to="/news-events" variant="outline-primary" className="view-all-news-btn d-none d-md-flex">
               View All <FaArrowRight className="ms-2" />
             </Button>
           </div>
           <NewsSwiper />
+          <div className="text-center mt-4 d-md-none">
+            <Button as={Link} to="/news-events" variant="outline-primary" className="view-all-news-btn">
+              View All News <FaArrowRight className="ms-2" />
+            </Button>
+          </div>
         </Container>
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding bg-primary text-white position-relative">
-        <div className="position-absolute top-0 start-0 w-100 h-100 opacity-10">
-          <div className="pattern-dots" />
-        </div>
+      <section className="section-padding testimonials-section bg-primary text-white position-relative">
+        <div className="pattern-overlay"></div>
         <Container className="position-relative">
-          <div className="text-center mb-5" data-aos="fade-up">
-            <h2 className="fw-bold mb-3">What Our Students Say</h2>
-            <p className="lead opacity-75">
+          <div className="section-header text-center mb-5" data-aos="fade-up">
+            <h2 className="section-title text-white">What Our Students Say</h2>
+            <p className="section-subtitle text-white-50">
               Hear from our students about their experience at KATSS
             </p>
           </div>
-          <Row className="g-4">
+          <Row className="g-4 justify-content-center">
             {featuredTestimonials.map((testimonial, index) => (
-              <Col lg={4} md={6} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+              <Col xl={4} lg={4} md={6} sm={12} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
                 <TestimonialCard {...testimonial} />
               </Col>
             ))}
@@ -216,21 +226,21 @@ const Home = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="section-padding bg-light">
+      <section className="cta-section section-padding">
         <Container>
-          <div className="text-center" data-aos="fade-up">
-            <h2 className="fw-bold text-primary mb-4">Ready to Start Your Journey?</h2>
-            <p className="lead text-muted mb-5 mx-auto" style={{ maxWidth: '700px' }}>
+          <div className="cta-content text-center" data-aos="fade-up">
+            <h2 className="cta-title">Ready to Start Your Journey?</h2>
+            <p className="cta-description">
               Join over 1,200 students who are shaping their future at KATSS. 
               Applications are now open for the 2025-26 academic year.
             </p>
-            <div className="d-flex flex-wrap justify-content-center gap-3">
+            <div className="cta-buttons">
               <Button 
                 as={Link} 
                 to="/apply" 
                 variant="primary" 
                 size="lg" 
-                className="px-5 py-3 fw-bold"
+                className="cta-btn primary"
               >
                 Apply Now
               </Button>
@@ -239,7 +249,7 @@ const Home = () => {
                 to="/contact" 
                 variant="outline-primary" 
                 size="lg" 
-                className="px-5 py-3 fw-bold"
+                className="cta-btn outline"
               >
                 Schedule a Visit
               </Button>
@@ -248,7 +258,7 @@ const Home = () => {
                 to="/downloads/prospectus" 
                 variant="outline-secondary" 
                 size="lg" 
-                className="px-5 py-3 fw-bold"
+                className="cta-btn outline-secondary"
               >
                 Download Prospectus
               </Button>

@@ -1,0 +1,104 @@
+.floating-whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* circular shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #25D366; /* WhatsApp green */
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+  background-color: #20b858;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.floating-chat-options {
+  position: fixed;
+  bottom: 100px; /* above the button */
+  right: 30px;
+  background: white;
+  border-radius: 12px; /* border radius for options panel */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 999;
+  min-width: 220px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-option {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.chat-option:last-child {
+  border-bottom: none;
+}
+
+.chat-option a {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.chat-option a:hover {
+  background-color: #f5f5f5;
+  color: #25D366;
+}
+
+.chat-option a svg {
+  font-size: 16px;
+  color: #25D366;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .floating-whatsapp {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .floating-whatsapp svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .floating-chat-options {
+    bottom: 80px;
+    right: 20px;
+    min-width: 180px;
+  }
+
+  .chat-option a {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}

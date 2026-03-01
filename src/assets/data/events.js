@@ -1,3 +1,25 @@
+// src/assets/data/events.js
+import { 
+  FaDoorOpen, 
+  FaBriefcase, 
+  FaFlask, 
+  FaMusic, 
+  FaUsers, 
+  FaFutbol, 
+  FaGraduationCap, 
+  FaHandshake,
+  FaCalendarAlt,
+  FaClock,
+  FaMapMarkerAlt,
+  FaTag,
+  FaStar,
+  FaUserTie,
+  FaChild,
+  FaRunning,
+  FaTheaterMasks,
+  FaChalkboardTeacher
+} from 'react-icons/fa';
+
 export const events = [
   {
     id: 1,
@@ -8,12 +30,14 @@ export const events = [
     location: 'KATSS Main Campus',
     type: 'Open House',
     category: 'Admissions',
-    image: '/images/events/open-day.jpg',
+    icon: FaDoorOpen,
+    image: '/images/annualcareerfair.jpg',
     registrationRequired: true,
     registrationLink: '/register/open-day',
     capacity: 300,
     registered: 245,
     featured: true,
+    views: 1250,
     tags: ['Admissions', 'Campus Tour', 'Information']
   },
   {
@@ -25,11 +49,13 @@ export const events = [
     location: 'School Auditorium',
     type: 'Career',
     category: 'Professional Development',
-    image: '/images/events/career-fair.jpg',
+    icon: FaBriefcase,
+    image: '/images/annualcareerfair.jpg',
     registrationRequired: false,
     capacity: 500,
     registered: 320,
     featured: true,
+    views: 2100,
     tags: ['Career', 'Networking', 'Industry']
   },
   {
@@ -39,13 +65,15 @@ export const events = [
     date: '2025-12-05',
     time: '8:00 AM - 6:00 PM',
     location: 'Science Complex',
-    type: 'Academic',
+    type: 'Exhibition',
     category: 'Science & Technology',
+    icon: FaFlask,
     image: '/images/events/science-expo.jpg',
     registrationRequired: false,
     capacity: 1000,
     registered: 0,
     featured: false,
+    views: 890,
     tags: ['Science', 'Technology', 'Innovation']
   },
   {
@@ -57,11 +85,13 @@ export const events = [
     location: 'School Grounds',
     type: 'Cultural',
     category: 'Cultural Activities',
-    image: '/images/events/cultural-day.jpg',
+    icon: FaMusic,
+    image: '/images/cultural day celebration.jpg',
     registrationRequired: false,
     capacity: 2000,
     registered: 0,
     featured: true,
+    views: 3400,
     tags: ['Culture', 'Heritage', 'Community']
   },
   {
@@ -71,14 +101,16 @@ export const events = [
     date: '2025-12-10',
     time: '2:00 PM - 5:00 PM',
     location: 'Classrooms',
-    type: 'Academic',
+    type: 'Meeting',
     category: 'Parent Engagement',
+    icon: FaUsers,
     image: '/images/events/parents-meeting.jpg',
     registrationRequired: true,
     registrationLink: '/register/parents-meeting',
     capacity: 800,
     registered: 560,
     featured: false,
+    views: 670,
     tags: ['Parents', 'Academic', 'Progress']
   },
   {
@@ -90,11 +122,13 @@ export const events = [
     location: 'Sports Complex',
     type: 'Sports',
     category: 'Sports',
-    image: '/images/events/sports-finals.jpg',
+    icon: FaFutbol,
+    image: '/images/sports championship.jpg',
     registrationRequired: false,
     capacity: 1500,
     registered: 0,
     featured: true,
+    views: 1850,
     tags: ['Sports', 'Competition', 'Athletics']
   },
   {
@@ -106,12 +140,14 @@ export const events = [
     location: 'Main Auditorium',
     type: 'Ceremony',
     category: 'Graduation',
-    image: '/images/events/graduation.jpg',
+    icon: FaGraduationCap,
+    image: '/images/graduation.jpg',
     registrationRequired: true,
     registrationLink: '/register/graduation',
     capacity: 1200,
     registered: 850,
     featured: true,
+    views: 2900,
     tags: ['Graduation', 'Achievement', 'Ceremony']
   },
   {
@@ -123,34 +159,36 @@ export const events = [
     location: 'School Multipurpose Hall',
     type: 'Networking',
     category: 'Alumni',
+    icon: FaHandshake,
     image: '/images/events/alumni-reunion.jpg',
     registrationRequired: true,
     registrationLink: '/register/alumni',
     capacity: 400,
     registered: 280,
     featured: false,
+    views: 950,
     tags: ['Alumni', 'Networking', 'Reunion']
   }
 ];
 
 export const eventCategories = [
-  { id: 'all', name: 'All Events', count: 8 },
-  { id: 'admissions', name: 'Admissions', count: 1 },
-  { id: 'career', name: 'Career', count: 1 },
-  { id: 'academic', name: 'Academic', count: 2 },
-  { id: 'cultural', name: 'Cultural', count: 1 },
-  { id: 'sports', name: 'Sports', count: 1 },
-  { id: 'ceremony', name: 'Ceremony', count: 1 },
-  { id: 'networking', name: 'Networking', count: 1 }
+  { id: 'all', name: 'All Events', icon: FaCalendarAlt, count: events.length },
+  { id: 'admissions', name: 'Admissions', icon: FaDoorOpen, count: events.filter(e => e.category === 'Admissions').length },
+  { id: 'career', name: 'Career', icon: FaBriefcase, count: events.filter(e => e.category === 'Professional Development').length },
+  { id: 'academic', name: 'Academic', icon: FaChalkboardTeacher, count: events.filter(e => e.category === 'Science & Technology' || e.category === 'Parent Engagement').length },
+  { id: 'cultural', name: 'Cultural', icon: FaTheaterMasks, count: events.filter(e => e.category === 'Cultural Activities').length },
+  { id: 'sports', name: 'Sports', icon: FaRunning, count: events.filter(e => e.category === 'Sports').length },
+  { id: 'ceremony', name: 'Ceremony', icon: FaStar, count: events.filter(e => e.category === 'Graduation').length },
+  { id: 'alumni', name: 'Alumni', icon: FaUserTie, count: events.filter(e => e.category === 'Alumni').length }
 ];
 
 export const eventTypes = [
-  'Open House',
-  'Career Fair',
-  'Exhibition',
-  'Cultural Event',
-  'Meeting',
-  'Sports',
-  'Ceremony',
-  'Networking'
+  { id: 'openhouse', name: 'Open House', icon: FaDoorOpen },
+  { id: 'career', name: 'Career Fair', icon: FaBriefcase },
+  { id: 'exhibition', name: 'Exhibition', icon: FaFlask },
+  { id: 'cultural', name: 'Cultural Event', icon: FaMusic },
+  { id: 'meeting', name: 'Meeting', icon: FaUsers },
+  { id: 'sports', name: 'Sports', icon: FaFutbol },
+  { id: 'ceremony', name: 'Ceremony', icon: FaGraduationCap },
+  { id: 'networking', name: 'Networking', icon: FaHandshake }
 ];

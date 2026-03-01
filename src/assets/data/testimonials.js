@@ -1,3 +1,5 @@
+// Testimonials data for KATSS website
+
 export const testimonials = [
   {
     id: 1,
@@ -23,21 +25,21 @@ export const testimonials = [
   {
     id: 2,
     name: 'Muhire Dieudonne',
-    role: 'Accounting Student',
-    program: 'Level 5, Accounting',
-    graduationYear: '2023',
-    quote: 'Before KATSS, Accounting seemed dry. Now, with the practical exercises and supportive teachers, I feel ready to step into a professional role and manage finances confidently.',
+    role: 'Software Development Student',
+    program: 'Level 5, Software Development',
+    graduationYear: '2026',
+    quote: 'Before KATSS, Software Development felt complicated and overwhelming. Now, with the hands-on projects and supportive instructors, I feel ready to step into a professional role and build applications with confidence.',
     rating: 4.5,
     image: '/images/testimonials/muhire.jpg',
-    company: 'KPMG Rwanda',
-    position: 'Audit Assistant',
+    company: 'EdTech Rwanda',
+    position: 'Fullstack Developer',
     verified: true,
     featured: true,
     date: '2025-09-20',
     achievements: [
       'Passed professional exams',
-      'Internship at accounting firm',
-      'QuickBooks certified'
+      'International Coding Competition',
+      'AI Training Certificate'
     ]
   },
   {

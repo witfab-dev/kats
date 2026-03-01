@@ -1,16 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Navbar, Nav, Button, Offcanvas } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  FaFacebook, FaYoutube, FaTwitter, FaInstagram, 
-  FaPhone, FaEnvelope, FaBars, FaWhatsapp,
-  FaSearch, FaUserGraduate
+  FaFacebookF, 
+  FaYoutube, 
+  FaTwitter, 
+  FaInstagram, 
+  FaPhone, 
+  FaEnvelope,
+  FaBars,
+  FaHome,
+  FaInfoCircle,
+  FaBook,
+  FaUserGraduate,
+  FaUsers,
+  FaCalendarAlt,
+  FaImages,
+  FaHeadset,
+  FaGraduationCap
 } from 'react-icons/fa';
-import { BiSolidSchool } from 'react-icons/bi';
 import './Header.css';
 
 const Header = () => {
-  const [expanded, setExpanded] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
@@ -23,134 +34,170 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { path: '/', label: 'Home', icon: <BiSolidSchool /> },
-    { path: '/about', label: 'About Us', icon: <FaUserGraduate /> },
-    { path: '/academics', label: 'Academics', icon: <FaUserGraduate /> },
-    { path: '/programs', label: 'Programs', icon: <FaUserGraduate /> },
-    { path: '/admissions', label: 'Admissions', icon: <FaUserGraduate /> },
-    { path: '/student-life', label: 'Student Life', icon: <FaUserGraduate /> },
-    { path: '/news-events', label: 'News & Events', icon: <FaUserGraduate /> },
-    { path: '/gallery', label: 'Gallery', icon: <FaUserGraduate /> },
-    { path: '/contact', label: 'Contact', icon: <FaUserGraduate /> },
-  ];
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const isActive = (path) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname === path;
+  };
 
   return (
-    <>
-      {/* Top Announcement Bar */}
-      <div className="top-announcement bg-primary text-white py-2">
-        <Container className="d-flex justify-content-between align-items-center">
-          <small>
-            🎓 <strong>Admissions Open for 2025-26</strong> - Apply before December 31st
-          </small>
-          <div className="d-none d-md-flex align-items-center gap-3">
-            <a href="tel:+250788416574" className="text-white text-decoration-none">
-              <FaPhone className="me-1" /> +250 788 416 574
+    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      {/* Head 1 - Top Bar with Social and Contact */}
+      <section className="head1">
+        <div className="quicklinks">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <FaFacebookF />
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+            <FaYoutube />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <FaTwitter />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <FaInstagram />
+          </a>
+        </div>
+        <div className="contact">
+          <p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=katsapapen@gmail.com&su=Subject+Here&body=Hello+there!" target="_blank" rel="noopener noreferrer">
+              <FaEnvelope /> katsapapen@gmail.com
             </a>
-            <span className="text-white-50">|</span>
-            <a href="mailto:katsapapen@gmail.com" className="text-white text-decoration-none">
-              <FaEnvelope className="me-1" /> katsapapen@gmail.com
-            </a>
-          </div>
-        </Container>
-      </div>
+            &nbsp;&nbsp;
+            <FaPhone /> +250 788416574
+          </p>
+        </div>
+      </section>
 
-      {/* Top Social Bar */}
-      <div className="top-social bg-dark text-white py-1">
-        <Container className="d-flex justify-content-between align-items-center">
-          <div className="d-flex gap-2">
-            <span className="text-white-50">Follow us:</span>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-white">
-              <FaFacebook size={14} />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white">
-              <FaYoutube size={14} />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white">
-              <FaTwitter size={14} />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white">
-              <FaInstagram size={14} />
-            </a>
-          </div>
-          <div className="d-none d-md-block">
-            <small>📍 Kirehe District, Eastern Province, Rwanda</small>
-          </div>
-        </Container>
-      </div>
-
-      {/* Main Navigation */}
-      <Navbar 
-        expand="lg" 
-        fixed="top" 
-        className={`main-navbar ${scrolled ? 'scrolled' : ''}`}
-        expanded={expanded}
-      >
-        <Container fluid className="px-md-5">
-          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center me-4">
-            <div className="logo-wrapper">
-              <img
-                src="/images/logo.jpeg"
-                alt="KATSS Logo"
-                height="55"
-                width="55"
-                className="rounded-circle me-3"
+      {/* Head 2 - Logo, School Name, Navigation */}
+      <section className="head2">
+        <div className="header-branding">
+          <div className="logo">
+            <Link to="/" onClick={() => setMenuOpen(false)}>
+              <img 
+                src="/images/logo.jpeg" 
+                alt="katss logo" 
                 onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = 'https://placehold.co/55x55/003366/ffffff?text=KATSS';
-                }}
+                  e.target.onerror = null; 
+                  e.target.src = 'https://placehold.co/60x60/003366/ffffff?text=LOGO';
+                }} 
+                loading="lazy"
               />
-            </div>
-            <div className="brand-text d-flex flex-column">
-              <h1 className="h5 fw-bold mb-0 text-primary">Kirehe Adventist</h1>
-              <h2 className="h6 mb-0 text-secondary">Technical Secondary School</h2>
-              <small className="text-muted fst-italic fw-bold motto-text">Success Demands Aim</small>
-            </div>
-          </Navbar.Brand>
+            </Link>
+          </div>
+          <div className="school_name">
+            <h1>Kirehe adventist technical <br /> secondary school</h1>
+          </div>
+        </div>
 
-          <Navbar.Toggle 
-            aria-controls="navbar-nav" 
-            onClick={() => setExpanded(!expanded)}
-            className="border-0"
-          >
-            <FaBars />
-          </Navbar.Toggle>
+        <nav className={`main-nav ${menuOpen ? 'open' : ''}`}>
+          <ul>
+            <li>
+              <Link 
+                to="/" 
+                data-page="home" 
+                className={isActive('/') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaHome /> Home
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/about" 
+                data-page="about"
+                className={isActive('/about') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaInfoCircle /> About Us
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/academics" 
+                data-page="academics"
+                className={isActive('/academics') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaBook /> Academics
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/programs" 
+                data-page="programs"
+                className={isActive('/programs') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaGraduationCap /> Programs
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/admissions" 
+                data-page="admissions"
+                className={isActive('/admissions') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaUserGraduate /> Admissions
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/student-life" 
+                data-page="student-life"
+                className={isActive('/student-life') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaUsers /> Student Life
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/news-events" 
+                data-page="news-events-page"
+                className={isActive('/news-events') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaCalendarAlt /> News & Events
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/gallery" 
+                data-page="gallery"
+                className={isActive('/gallery') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaImages /> Gallery
+              </Link>
+            </li>
+            <li>
+              <Link 
+                to="/contact" 
+                data-page="contact"
+                className={isActive('/contact') ? 'active' : ''}
+                onClick={() => setMenuOpen(false)}
+              >
+                <FaHeadset /> Contact Us
+              </Link>
+            </li>
+          </ul>
+        </nav>
 
-          <Navbar.Collapse id="navbar-nav">
-            <Nav className="ms-auto align-items-center flex-wrap">
-              {navLinks.map((link) => (
-                <Nav.Link
-                  key={link.path}
-                  as={Link}
-                  to={link.path}
-                  active={location.pathname === link.path}
-                  onClick={() => setExpanded(false)}
-                  className="nav-link-custom px-2 px-md-3"
-                >
-                  <span className="nav-icon d-none d-lg-inline">{link.icon}</span>
-                  <span className="nav-label">{link.label}</span>
-                </Nav.Link>
-              ))}
-            </Nav>
-            
-            {/* Mobile contact info */}
-            <div className="d-lg-none mt-4 pt-3 border-top">
-              <div className="text-center">
-                <a href="tel:+250788416574" className="text-decoration-none d-block mb-2">
-                  <FaPhone className="me-2" /> +250 788 416 574
-                </a>
-                <a href="mailto:katsapapen@gmail.com" className="text-decoration-none d-block">
-                  <FaEnvelope className="me-2" /> katsapapen@gmail.com
-                </a>
-              </div>
-            </div>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-
-      {/* Spacer for fixed navbar */}
-      <div style={{ height: scrolled ? '100px' : '120px' }} />
-    </>
+        <div className="menu-icon" onClick={toggleMenu}>
+          <FaBars />
+        </div>
+      </section>
+    </header>
   );
 };
 

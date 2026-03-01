@@ -34,7 +34,7 @@ import NewsSwiper from '../components/NewsSwiper';
 import { events, eventCategories, eventTypes } from '../assets/data/events';
 import { schoolInfo } from '../assets/data/constants';
 import './NewsEvents.css';
-
+import HeroSection from '../components//HeroSection';
 const NewsEvents = () => {
   const [activeTab, setActiveTab] = useState('upcoming');
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -132,29 +132,15 @@ const NewsEvents = () => {
 
   return (
     <Container className="news-events-page">
-      {/* Hero Section */}
-      <div className="page-hero mb-5">
-        <h1 className="display-4 mb-3">News & Events</h1>
-        <p className="lead">
-          Stay updated with the latest happenings at KATSS
-        </p>
-        
-        <div className="hero-stats d-flex gap-4 mt-4">
-          <div className="stat-item">
-            <h3>{upcomingEvents.length}</h3>
-            <p className="text-muted mb-0">Upcoming Events</p>
-          </div>
-          <div className="stat-item">
-            <h3>{events.filter(e => e.featured).length}</h3>
-            <p className="text-muted mb-0">Featured</p>
-          </div>
-          <div className="stat-item">
-            <h3>{events.filter(e => e.registrationRequired).length}</h3>
-            <p className="text-muted mb-0">Require Registration</p>
-          </div>
-        </div>
-      </div>
-
+<HeroSection 
+  title="About KATSS"
+  subtitle="20+ Years of Educational Excellence in Eastern Rwanda"
+  backgroundImage="/images/schoolcomp.jpg"
+  ctaPrimary={{ text: "Meet Our Team", link: "#leadership" }}
+  ctaSecondary={{ text: "View Programs", link: "/programs" }}
+  align="left" // This will align everything to the left
+  showStats={true} // Keep the stats box on the right
+/>
       {/* Featured Events Carousel */}
       <div className="mb-5">
         <NewsSwiper 
