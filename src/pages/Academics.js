@@ -134,18 +134,12 @@ const Academics = () => {
         <meta name="keywords" content="academics, curriculum, technical education, TVET, programs, facilities" />
       </Helmet>
 
-      <Breadcrumb 
-        customItems={[
-          { path: '/academics', name: 'Academics', icon: <FaBook />, active: true }
-        ]}
-      />
-
       {/* Hero Section */}
       <section className="academics-hero section-padding bg-primary text-white">
         <Container>
           <Row className="align-items-center">
             <Col lg={6}>
-              <h1 className="display-5 fw-bold mb-4">
+              <h1 className="display-5 fw-bold mb-4" style={{ color: "white" }}>
                 Academic Excellence in Technical Education
               </h1>
               <p className="lead opacity-75 mb-5">
@@ -157,10 +151,7 @@ const Academics = () => {
                   <FaArrowRight className="me-2" />
                   Explore Programs
                 </Button>
-                <Button as={Link} to="/admissions" variant="outline-light" size="lg">
-                  <FaDownload className="me-2" />
-                  Download Curriculum
-                </Button>
+
               </div>
             </Col>
             <Col lg={6} className="mt-5 mt-lg-0">
@@ -177,7 +168,8 @@ const Academics = () => {
           </Row>
         </Container>
       </section>
-
+<br/>
+<br/>
       {/* Academic Levels */}
       <section className="section-padding">
         <Container>
@@ -434,11 +426,7 @@ const Academics = () => {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
-              
-              <Button variant="outline-primary" className="w-100">
-                <FaDownload className="me-2" />
-                Download Full Calendar (PDF)
-              </Button>
+
             </Col>
             
             <Col lg={6} className="mt-5 mt-lg-0">
@@ -494,29 +482,7 @@ const Academics = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="section-padding bg-primary text-white">
-        <Container>
-          <Row className="align-items-center">
-            <Col lg={8}>
-              <h2 className="fw-bold mb-3">Ready to Start Your Academic Journey?</h2>
-              <p className="lead opacity-75 mb-0">
-                Apply now to join our community of learners and innovators
-              </p>
-            </Col>
-            <Col lg={4} className="text-lg-end mt-4 mt-lg-0">
-              <Button 
-                as={Link} 
-                to="/apply" 
-                variant="light" 
-                size="lg"
-                className="fw-semibold px-5"
-              >
-                Apply Now <FaArrowRight className="ms-2" />
-              </Button>
-            </Col>
-          </Row>
-        </Container>
-      </section>
+
     </>
   );
 };

@@ -1,0 +1,74 @@
+.testimonials-swiper-wrapper {
+  position: relative;
+  padding: 0 20px;
+  background: linear-gradient(180deg, rgba(0,51,102,0.03) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 20px;
+}
+
+.testimonials-swiper {
+  padding: 20px 0 50px 0;
+}
+
+/* Center the slide and set a max-width */
+.testimonials-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.testimonial-slide-content {
+  width: 100%;
+  max-width: 800px; /* adjust as needed */
+  margin: 0 auto;
+}
+
+/* Navigation buttons */
+.testimonials-swiper .swiper-button-next,
+.testimonials-swiper .swiper-button-prev {
+  color: var(--color-primary, #003366);
+  background: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.testimonials-swiper .swiper-button-next:after,
+.testimonials-swiper .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.testimonials-swiper .swiper-button-next:hover,
+.testimonials-swiper .swiper-button-prev:hover {
+  background: var(--color-primary, #003366);
+  color: white;
+}
+
+/* Pagination dots */
+.testimonials-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.5);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.testimonials-swiper .swiper-pagination-bullet-active {
+  background: var(--color-primary, #003366);
+  transform: scale(1.2);
+}
+
+/* Hide navigation on small screens */
+@media (max-width: 640px) {
+  .testimonials-swiper-wrapper {
+    padding: 0 10px;
+  }
+  
+  .testimonials-swiper .swiper-button-next,
+  .testimonials-swiper .swiper-button-prev {
+    display: none;
+  }
+}

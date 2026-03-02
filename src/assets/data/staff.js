@@ -1,7 +1,7 @@
 export const leadershipTeam = [
   {
     id: 1,
-    name: 'John N. Smith',
+    name: 'KADARI Ruhetesha Aoron',
     position: 'Headmaster',
     qualifications: [
       'M.Ed Educational Leadership',
@@ -23,7 +23,7 @@ export const leadershipTeam = [
   },
   {
     id: 2,
-    name: 'Mary J. Kabera',
+    name: 'NSABIMANA Peter',
     position: 'Director of Studies',
     qualifications: [
       'M.Sc Curriculum Development',
@@ -45,11 +45,11 @@ export const leadershipTeam = [
   },
   {
     id: 3,
-    name: 'Peter M. Nzabahimana',
-    position: 'Academic Dean',
+    name: 'KARIMUNDA Emmanuel',
+    position: 'Accountant',
     qualifications: [
       'Ph.D Technical Education',
-      'M.Sc Engineering',
+      'M.Sc finance',
       'Certified Assessor'
     ],
     bio: 'Dr. Nzabahimana brings extensive industry experience to his role, ensuring our technical programs remain relevant to current market needs.',
@@ -67,7 +67,7 @@ export const leadershipTeam = [
   },
   {
     id: 4,
-    name: 'Sarah U. Mutoni',
+    name: 'KAGOFERO Evariste',
     position: 'Discipline Master',
     qualifications: [
       'M.Ed Guidance & Counseling',

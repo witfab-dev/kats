@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FaWhatsapp, FaComment, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
+import './FloatingWhatsApp.css';
 
 const FloatingWhatsApp = () => {
   const [expanded, setExpanded] = useState(false);

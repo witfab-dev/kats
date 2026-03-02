@@ -1,16 +1,15 @@
+// src/pages/About.jsx
 import React, { useEffect } from 'react';
-import { Container, Row, Col, Button, Card, Tab, Nav, Accordion } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { 
-  FaHistory, 
   FaEye, 
   FaBullseye, 
   FaStar, 
   FaUsers, 
   FaAward,
   FaChartLine,
-  FaMapMarkerAlt,
   FaCalendarAlt,
   FaPhone,
   FaEnvelope,
@@ -18,19 +17,21 @@ import {
   FaCheckCircle,
   FaGraduationCap,
   FaHandshake,
-  FaHeart
+  FaHeart,
+  FaMapMarkerAlt,
+  FaClock
 } from 'react-icons/fa';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 // Components
-import Breadcrumb from '../components/Breadcrumb';
-import StatsCard from '../components/StatsCard';
 import HeroSection from '../components/HeroSection';
+import StatsCard from '../components/StatsCard';
 
 // Data
-import { leadershipTeam, teachingStaff, administrativeStaff, supportStaff } from '../assets/data/staff';
+import { leadershipTeam } from '../assets/data/staff';
 import { stats } from '../assets/data/constants';
+import './About.css';
 
 const About = () => {
   useEffect(() => {
@@ -83,7 +84,6 @@ const About = () => {
     { year: '2024', title: '20th Anniversary', description: 'Celebrating 20 years of educational excellence' }
   ];
 
-const allStaff = [...leadershipTeam, ...teachingStaff, ...administrativeStaff, ...supportStaff];
   return (
     <>
       <Helmet>
@@ -92,14 +92,7 @@ const allStaff = [...leadershipTeam, ...teachingStaff, ...administrativeStaff, .
           name="description" 
           content="Learn about KATSS history, mission, vision, core values, leadership team, and our commitment to technical education in Rwanda." 
         />
-        <meta name="keywords" content="about katss, school history, mission vision, leadership team, core values" />
       </Helmet>
-
-      <Breadcrumb 
-        customItems={[
-          { path: '/about', name: 'About Us', icon: <FaUsers />, active: true }
-        ]}
-      />
 
       {/* Hero Section */}
       <HeroSection 
@@ -110,7 +103,7 @@ const allStaff = [...leadershipTeam, ...teachingStaff, ...administrativeStaff, .
         ctaSecondary={{ text: "View Programs", link: "/programs" }}
       />
 
-      {/* Mission & Vision */}
+      {/* Mission & Vision Section */}
       <section className="section-padding">
         <Container>
           <Row className="g-5">
@@ -175,7 +168,7 @@ const allStaff = [...leadershipTeam, ...teachingStaff, ...administrativeStaff, .
         </Container>
       </section>
 
-      {/* Core Values */}
+      {/* Core Values Section */}
       <section className="section-padding bg-light">
         <Container>
           <div className="text-center mb-5">
@@ -249,11 +242,11 @@ const allStaff = [...leadershipTeam, ...teachingStaff, ...administrativeStaff, .
         </Container>
       </section>
 
-      {/* Quick Stats */}
+      {/* Stats Section */}
       <section className="section-padding bg-primary text-white">
         <Container>
           <div className="text-center mb-5">
-            <h2 className="fw-bold mb-3">KATSS by Numbers</h2>
+            <h2 className="fw-bold mb-3" >KATSS by Numbers</h2>
             <p className="lead opacity-75">
               Facts and figures that showcase our impact
             </p>
